@@ -27,11 +27,6 @@ df.rename(columns={
 st.write("### Primeiras linhas do dataset:")
 st.write(df.head())
 
-# Verificando os tipos de dados
-st.write("### Informações sobre o dataset:")
-buffer = df.info(buf=None)
-st.text(buffer)
-
 # Verificando valores nulos
 st.write("### Quantidade de valores nulos:")
 st.write(df.isnull().sum())
