@@ -23,59 +23,76 @@ df.rename(columns={
 
 
 
-df.head()
+# Mostrando as 5 primeiras linhas do dataset
+st.write("### Primeiras linhas do dataset:")
+st.write(df.head())
 
-#verificando os tipos de dados
-df.info()
+# Verificando os tipos de dados
+st.write("### Informações sobre o dataset:")
+buffer = df.info(buf=None)
+st.text(buffer)
 
-#vendo se há algum valor nulo:
-df.isnull().sum()
+# Verificando valores nulos
+st.write("### Quantidade de valores nulos:")
+st.write(df.isnull().sum())
 
+# Criando gráficos no Streamlit
+st.write("## 📊 Visualizações")
 
-# Gráfico de dispersão
-plt.scatter(df['Horas_sol'], df['rendimento'], s=10, alpha=1)
-plt.xlabel("Horas de Sol")
-plt.ylabel("Rendimento da Colheita")
-plt.title("Comparação entre Horas de Sol e Rendimento da Colheita")
-plt.show()
+# Gráfico de dispersão: Horas de Sol vs Rendimento
+st.write("### Horas de Sol vs Rendimento da Colheita")
+fig, ax = plt.subplots()
+ax.scatter(df['Horas_sol'], df['rendimento'], s=10, alpha=1)
+ax.set_xlabel("Horas de Sol")
+ax.set_ylabel("Rendimento da Colheita")
+ax.set_title("Comparação entre Horas de Sol e Rendimento da Colheita")
+st.pyplot(fig)
 
-# Gráfico de barras
-plt.bar(df['Horas_sol'], df['rendimento'])
-plt.xlabel("Horas de Sol")
-plt.ylabel("Rendimento da Colheita")
-plt.title("Comparação entre Horas de Sol e Rendimento da Colheita")
-plt.show()
+# Gráfico de barras: Horas de Sol vs Rendimento
+st.write("### Comparação entre Horas de Sol e Rendimento da Colheita")
+fig, ax = plt.subplots()
+ax.bar(df['Horas_sol'], df['rendimento'])
+ax.set_xlabel("Horas de Sol")
+ax.set_ylabel("Rendimento da Colheita")
+ax.set_title("Comparação entre Horas de Sol e Rendimento da Colheita")
+st.pyplot(fig)
 
-#comparando a quantidade de chuva e a qualidade do solo
-plt.figure(figsize=(12, 8))
-plt.bar(df['Chuva_mm'], df['indice_qualidade_solo'])
-plt.ylabel("Qualidade do Solo")
-plt.xlabel("Quantidade de Chuva")
-plt.title("Comparação entre Chuva e Qualidade do Solo")
-plt.show()
+# Comparação entre Quantidade de Chuva e Qualidade do Solo
+st.write("### Comparação entre Chuva e Qualidade do Solo")
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.bar(df['Chuva_mm'], df['indice_qualidade_solo'])
+ax.set_ylabel("Qualidade do Solo")
+ax.set_xlabel("Quantidade de Chuva")
+ax.set_title("Comparação entre Chuva e Qualidade do Solo")
+st.pyplot(fig)
 
-#índice de Qualidade do Solo vs Rendimento
-plt.bar(df['indice_qualidade_solo'], df['rendimento'])
-plt.xlabel("Índice de Qualidade do Solo")
-plt.ylabel("Rendimento")
-plt.title("Comparação entre Qualidade do Solo e Rendimento")
-plt.show()
+# Índice de Qualidade do Solo vs Rendimento
+st.write("### Comparação entre Qualidade do Solo e Rendimento")
+fig, ax = plt.subplots()
+ax.bar(df['indice_qualidade_solo'], df['rendimento'])
+ax.set_xlabel("Índice de Qualidade do Solo")
+ax.set_ylabel("Rendimento")
+ax.set_title("Comparação entre Qualidade do Solo e Rendimento")
+st.pyplot(fig)
 
-#comparação entre tamanho da fazendo e rendimento
-plt.plot(df['fazenda_tamanho_ha'], df['rendimento'])
-plt.xlabel("Tamanho da Fazenda (ha)")
-plt.ylabel("Rendimento")
-plt.title("Comparação entre Tamanho da Fazenda e Rendimento")
-plt.show()
+# Comparação entre tamanho da fazenda e rendimento
+st.write("### Comparação entre Tamanho da Fazenda e Rendimento")
+fig, ax = plt.subplots()
+ax.plot(df['fazenda_tamanho_ha'], df['rendimento'])
+ax.set_xlabel("Tamanho da Fazenda (ha)")
+ax.set_ylabel("Rendimento")
+ax.set_title("Comparação entre Tamanho da Fazenda e Rendimento")
+st.pyplot(fig)
 
-#horas de sol x fertilizante
-plt.hexbin(df['Horas_sol'], df['fertilizante_kg'], gridsize=30, cmap='coolwarm')
-plt.colorbar(label='Densidade')
-plt.xlabel('Horas de Sol')
-plt.ylabel('Fertilizante (kg)')
-plt.title('Horas de Sol vs Uso de Fertilizante')
-plt.show()
-
+# Horas de sol x fertilizante
+st.write("### Horas de Sol vs Uso de Fertilizante")
+fig, ax = plt.subplots()
+hb = ax.hexbin(df['Horas_sol'], df['fertilizante_kg'], gridsize=30, cmap='coolwarm')
+fig.colorbar(hb, label='Densidade')
+ax.set_xlabel('Horas de Sol')
+ax.set_ylabel('Fertilizante (kg)')
+ax.set_title('Horas de Sol vs Uso de Fertilizante')
+st.pyplot(fig)
 
 
 # Variáveis independentes
