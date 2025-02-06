@@ -43,15 +43,6 @@ ax.set_ylabel("Rendimento da Colheita")
 ax.set_title("Comparação entre Horas de Sol e Rendimento da Colheita")
 st.pyplot(fig)
 
-# Gráfico de barras: Horas de Sol vs Rendimento
-st.write("### Comparação entre Horas de Sol e Rendimento da Colheita")
-fig, ax = plt.subplots()
-ax.bar(df['Horas_sol'], df['rendimento'])
-ax.set_xlabel("Horas de Sol")
-ax.set_ylabel("Rendimento da Colheita")
-ax.set_title("Comparação entre Horas de Sol e Rendimento da Colheita")
-st.pyplot(fig)
-
 # Comparação entre Quantidade de Chuva e Qualidade do Solo
 st.write("### Comparação entre Chuva e Qualidade do Solo")
 fig, ax = plt.subplots(figsize=(12, 8))
