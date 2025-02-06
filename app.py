@@ -11,8 +11,6 @@ import matplotlib.pyplot as plt
 #criando a variável do dataset
 df = pd.read_csv('crop_yield_data.csv')
 
-df.columns = df.columns.str.strip()
-
 # renomeando as colunas:
 df.rename(columns={
     'rainfall_mm': 'Chuva_mm',
@@ -22,7 +20,7 @@ df.rename(columns={
     'sunlight_hours': 'Horas_sol',
     'crop_yield': 'rendimento'
 }, inplace=True)
-df.columns = df.columns.str.strip()
+
 
 
 df.head()
@@ -79,9 +77,6 @@ plt.title('Horas de Sol vs Uso de Fertilizante')
 plt.show()
 
 
-df.columns = df.columns.str.lower()
-# Carregar os dados (substitua pelo seu dataset)
-df = pd.read_csv("crop_yield_data.csv")
 
 # Variáveis independentes
 X = df[['Horas_sol', 'fertilizante_kg', 'fazenda_tamanho_ha', 'indice_qualidade_solo', 'Chuva_mm']]
