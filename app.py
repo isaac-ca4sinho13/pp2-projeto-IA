@@ -136,8 +136,6 @@ if st.button("Prever Rendimento"):
     entrada = pd.DataFrame([[horas_sol, fertilizante_kg, tamanho_fazenda, qualidade_solo, chuva_mm]],
                            columns=['Horas_sol', 'fertilizante_kg', 'fazenda_tamanho_ha', 'indice_qualidade_solo', 'Chuva_mm'])
 
-    # Fazer a previsão
-    modelo = joblib.load("modelo_regressao.pkl")
     previsao = modelo.predict(entrada)
 
     # Exibir a previsão
