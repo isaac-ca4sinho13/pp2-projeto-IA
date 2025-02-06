@@ -1,10 +1,26 @@
 import pandas as pd
+import numpy as np
+import pandas as pd
+import streamlit as st
+import joblib
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import matplotlib.pyplot as plt
 
 #criando a variável do dataset
 df = pd.read_csv('crop_yield_data.csv')
 
 # renomeando as colunas:
-df.rename(columns={'rainfall_mm':'Chuva_mm','soil_quality_index':'indice_qualidade_solo','farm_size_hectares': 'fazenda_tamanho_ha','fertilizer_kg':'fertilizante_kg','sunlight_hours':'Horas_sol', 'crop_yield': 'rendimento'}, inplace=True)
+df.rename(columns={
+    'rainfall_mm': 'Chuva_mm',
+    'soil_quality_index': 'indice_qualidade_solo',
+    'farm_size_hectares': 'fazenda_tamanho_ha',
+    'fertilizer_kg': 'fertilizante_kg',
+    'sunlight_hours': 'Horas_sol',
+    'crop_yield': 'rendimento'
+}, inplace=True)
+
 
 df.head()
 
@@ -14,7 +30,7 @@ df.info()
 #vendo se há algum valor nulo:
 df.isnull().sum()
 
-import matplotlib.pyplot as plt
+
 # Gráfico de dispersão
 plt.scatter(df['Horas_sol'], df['rendimento'], s=10, alpha=1)
 plt.xlabel("Horas de Sol")
@@ -60,14 +76,6 @@ plt.title('Horas de Sol vs Uso de Fertilizante')
 plt.show()
 
 
-
-import numpy as np
-import pandas as pd
-import streamlit as st
-import joblib
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # Carregar os dados (substitua pelo seu dataset)
 df = pd.read_csv("crop_yield_data.csv")
